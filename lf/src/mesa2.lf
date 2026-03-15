@@ -1,0 +1,368 @@
+target Cpp;
+
+// reactor 1 mdl server
+reactor MdlServer {
+
+    
+    timer t(0, 1 msec);
+
+   
+    output m0:double;
+    output m1:double;
+    output m2:double;
+    output m3:double;
+    output m4:double;
+    output m5:double;
+    output m6:double;
+    output m7:double;
+
+    
+    input  c0:double;
+    input  c1:double;
+    input  c2:double;
+    input  c3:double;
+    input  c4:double;
+
+    private preamble {=
+        #include <winsock2.h>
+        #include <ws2tcpip.h>
+        #include <iostream>
+        #include <string>
+        #include <array>
+
+        #pragma comment(lib, "Ws2_32.lib")
+
+        SOCKET mdl_sock = INVALID_SOCKET;
+        SOCKET mdl_srv  = INVALID_SOCKET;
+
+        bool mdl_ready = false;
+
+        
+        std::string recvLineM(SOCKET s){
+            std::string line;
+            char c;
+            while (true) {
+                int r = recv(s, &c, 1, 0);
+                if (r <= 0) return "";   
+                if (c == '\n') break;
+                line.push_back(c);
+            }
+            return line;
+        }
+
+        
+        void sendStringM(SOCKET s, const std::string& msg){
+            send(s, msg.c_str(), (int)msg.size(), 0);
+        }
+
+        
+        std::array<double,8> parse_eight(const std::string& s){
+            std::array<double,8> arr{0,0,0,0,0,0,0,0};
+            if (s.empty()) return arr;
+
+            size_t start = 0;
+            for (int i = 0; i < 8; i++) {
+                size_t pos = s.find(',', start);
+                std::string token;
+                if (pos == std::string::npos){
+                    token = s.substr(start);
+                } else {
+                    token = s.substr(start, pos - start);
+                }
+
+                try {
+                    if (!token.empty()) {
+                        arr[i] = std::stod(token);
+                    }
+                } catch (...) {
+                    // 保持默认 0
+                }
+
+                if (pos == std::string::npos) break;
+                start = pos + 1;
+            }
+            return arr;
+        }
+    =}
+
+   
+    reaction(startup) {=
+        WSADATA w;
+        WSAStartup(MAKEWORD(2,2), &w);
+
+        mdl_srv = socket(AF_INET, SOCK_STREAM, 0);
+
+        sockaddr_in addr;
+        addr.sin_family      = AF_INET;
+        addr.sin_port        = htons(9000);   
+        addr.sin_addr.s_addr = INADDR_ANY;
+
+        bind(mdl_srv, (sockaddr*)&addr, sizeof(addr));
+        listen(mdl_srv, 1);
+
+        std::cout << "[MdlServer] Waiting Modelica..." << std::endl;
+        mdl_sock = accept(mdl_srv, NULL, NULL);
+        if (mdl_sock == INVALID_SOCKET) {
+            std::cout << "[MdlServer] accept failed." << std::endl;
+            return;
+        }
+        mdl_ready = true;
+        std::cout << "[MdlServer] Modelica connected!" << std::endl;
+    =}
+
+    
+    reaction(t) -> m0,m1,m2,m3,m4,m5,m6,m7 {=
+        if (!mdl_ready) {
+            std::cout << "[MdlServer] Not ready (no Modelica)." << std::endl;
+            return;
+        }
+
+        std::string msg = recvLineM(mdl_sock);
+        if (msg.empty()) {
+            std::cout << "[MdlServer] (1) recv: <empty or closed>" << std::endl;
+            return;
+        }
+
+        std::cout << "[MdlServer] (1) MDL -> LF : " << msg << std::endl;
+
+        auto vals = parse_eight(msg);
+
+        m0.set(vals[0]);
+        m1.set(vals[1]);
+        m2.set(vals[2]);
+        m3.set(vals[3]);
+        m4.set(vals[4]);
+        m5.set(vals[5]);
+        m6.set(vals[6]);
+        m7.set(vals[7]);
+
+        std::cout << "[MdlServer] (1) send 8 doubles to ScServer: "
+                  << vals[0] << "," << vals[1] << "," << vals[2] << "," << vals[3] << ","
+                  << vals[4] << "," << vals[5] << "," << vals[6] << "," << vals[7]
+                  << std::endl;
+    =}
+
+    
+    reaction(c0,c1,c2,c3,c4) {=
+        if (!mdl_ready) {
+            std::cout << "[MdlServer] (4) Not ready to send back." << std::endl;
+            return;
+        }
+
+        double d0 = *c0.get();
+        double d1 = *c1.get();
+        double d2 = *c2.get();
+        double d3 = *c3.get();
+        double d4 = *c4.get();
+
+        std::string cs_str =
+            std::to_string(d0) + "," +
+            std::to_string(d1) + "," +
+            std::to_string(d2) + "," +
+            std::to_string(d3) + "," +
+            std::to_string(d4);
+
+        sendStringM(mdl_sock, cs_str + "\n");
+
+        std::cout << "[MdlServer] (4) LF -> MDL (5 doubles -> string): "
+                  << cs_str << std::endl;
+    =}
+}
+
+
+
+// reactor2 SC server
+reactor ScServer {
+
+    // from mdl server
+    input  m0:double;
+    input  m1:double;
+    input  m2:double;
+    input  m3:double;
+    input  m4:double;
+    input  m5:double;
+    input  m6:double;
+    input  m7:double;
+
+    // back too mdl server
+    output c0:double;
+    output c1:double;
+    output c2:double;
+    output c3:double;
+    output c4:double;
+
+    logical action step_recv;
+
+    private preamble {=
+        #include <winsock2.h>
+        #include <ws2tcpip.h>
+        #include <iostream>
+        #include <string>
+        #include <array>
+
+        #pragma comment(lib, "Ws2_32.lib")
+
+        SOCKET sc_sock = INVALID_SOCKET;
+        SOCKET sc_srv  = INVALID_SOCKET;
+
+        bool sc_ready = false;
+
+       
+        std::string recvLineS(SOCKET s){
+            std::string line;
+            char c;
+            while (true) {
+                int r = recv(s, &c, 1, 0);
+                if (r <= 0) return "";
+                if (c == '\n') break;
+                line.push_back(c);
+            }
+            return line;
+        }
+
+        void sendStringS(SOCKET s, const std::string& msg){
+            send(s, msg.c_str(), (int)msg.size(), 0);
+        }
+
+        // cutter
+        std::array<double,5> parse_five(const std::string& s){
+            std::array<double,5> arr{0,0,0,0,0};
+            if (s.empty()) return arr;
+
+            size_t start = 0;
+            for (int i = 0; i < 5; i++) {
+                size_t pos = s.find(',', start);
+                std::string token;
+                if (pos == std::string::npos){
+                    token = s.substr(start);
+                } else {
+                    token = s.substr(start, pos - start);
+                }
+
+                try {
+                    if (!token.empty()) {
+                        arr[i] = std::stod(token);
+                    }
+                } catch (...) {
+                    
+                }
+
+                if (pos == std::string::npos) break;
+                start = pos + 1;
+            }
+            return arr;
+        }
+    =}
+
+    
+    reaction(startup) {=
+        WSADATA w;
+        WSAStartup(MAKEWORD(2,2), &w);
+
+        sc_srv = socket(AF_INET, SOCK_STREAM, 0);
+
+        sockaddr_in addr;
+        addr.sin_family      = AF_INET;
+        addr.sin_port        = htons(3000);   
+        addr.sin_addr.s_addr = INADDR_ANY;
+
+        bind(sc_srv, (sockaddr*)&addr, sizeof(addr));
+        listen(sc_srv, 1);
+
+        std::cout << "[ScServer] Waiting SystemC..." << std::endl;
+        sc_sock = accept(sc_srv, NULL, NULL);
+        if (sc_sock == INVALID_SOCKET) {
+            std::cout << "[ScServer] accept failed." << std::endl;
+            return;
+        }
+        sc_ready = true;
+        std::cout << "[ScServer] SystemC connected!" << std::endl;
+    =}
+
+    
+    reaction(m0,m1,m2,m3,m4,m5,m6,m7) -> step_recv {=
+        if (!sc_ready) {
+            std::cout << "[ScServer] Not ready (no SystemC)." << std::endl;
+            return;
+        }
+
+        double v0 = *m0.get();
+        double v1 = *m1.get();
+        double v2 = *m2.get();
+        double v3 = *m3.get();
+        double v4 = *m4.get();
+        double v5 = *m5.get();
+        double v6 = *m6.get();
+        double v7 = *m7.get();
+
+        std::string in_str =
+            std::to_string(v0) + "," +
+            std::to_string(v1) + "," +
+            std::to_string(v2) + "," +
+            std::to_string(v3) + "," +
+            std::to_string(v4) + "," +
+            std::to_string(v5) + "," +
+            std::to_string(v6) + "," +
+            std::to_string(v7);
+
+        sendStringS(sc_sock, in_str + "\n");
+
+        std::cout << "[ScServer] (2) LF -> SC : " << in_str << std::endl;
+
+        
+        step_recv.schedule();
+    =}
+
+    
+    reaction(step_recv) -> c0,c1,c2,c3,c4 {=
+        if (!sc_ready) {
+            std::cout << "[ScServer] Not ready to recv." << std::endl;
+            return;
+        }
+
+        std::string out_str = recvLineS(sc_sock);
+        if (out_str.empty()) {
+            std::cout << "[ScServer] (3) SC -> LF : <empty or closed>" << std::endl;
+            return;
+        }
+
+        std::cout << "[ScServer] (3) SC -> LF : " << out_str << std::endl;
+
+        auto vals = parse_five(out_str);
+
+        c0.set(vals[0]);
+        c1.set(vals[1]);
+        c2.set(vals[2]);
+        c3.set(vals[3]);
+        c4.set(vals[4]);
+
+        std::cout << "[ScServer] (3) send 5 doubles to MdlServer: "
+                  << vals[0] << "," << vals[1] << "," << vals[2] << ","
+                  << vals[3] << "," << vals[4] << std::endl;
+    =}
+}
+
+
+
+
+main reactor mesa2 {
+    mdl = new MdlServer();
+    sc  = new ScServer();
+
+    
+    mdl.m0 -> sc.m0;
+    mdl.m1 -> sc.m1;
+    mdl.m2 -> sc.m2;
+    mdl.m3 -> sc.m3;
+    mdl.m4 -> sc.m4;
+    mdl.m5 -> sc.m5;
+    mdl.m6 -> sc.m6;
+    mdl.m7 -> sc.m7;
+
+    
+    sc.c0 -> mdl.c0;
+    sc.c1 -> mdl.c1;
+    sc.c2 -> mdl.c2;
+    sc.c3 -> mdl.c3;
+    sc.c4 -> mdl.c4;
+}
