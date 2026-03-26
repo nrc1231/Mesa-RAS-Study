@@ -9,7 +9,10 @@ flowchart TB
 ```
 
 
+
 # Black Mesa System
+
+<img width="394" height="424" alt="ChatGPT Image 2026年3月26日 15_08_50" src="https://github.com/user-attachments/assets/44c35973-3eff-45f1-aabc-5fd59648fd62" />
 
 The **Black Mesa System** is a co-simulation framework designed for cyber-physical system research, with a focus on multi-domain integration and deterministic orchestration.
 
