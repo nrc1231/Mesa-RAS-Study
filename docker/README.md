@@ -42,13 +42,13 @@ After the example is successfully built, terminate the example execution.
 
 Navigate to the example directory:
 
-/messy/example/read_write_sensor
+/messy/examples/read_write_sensor
 
 Replace the file:
 
 read_write_sensor.c
 
-with the modified version provided in this repository.
+with the modified version provided in this repository: /docker/MESSY/example/.
 
 ---
 
@@ -58,7 +58,7 @@ Navigate to the source directory:
 
 /messy/messy/src
 
-Replace the following files with the modified versions provided in this repository:
+Replace the following files with the modified versions provided in this repository: /docker/MESSY/src/
 
 core.cpp  
 core_power.cpp  
@@ -74,7 +74,7 @@ sensor_mic_click_power.cpp
 Navigate to the source directory:
 /messy/messy/include
 
-Replace the following files with the modified versions provided in this repository:
+Replace the following files with the modified versions provided in this repository: /docker/MESSY/include/
 core.hpp  
 core_power.hpp  
 functional_bus.hpp  
