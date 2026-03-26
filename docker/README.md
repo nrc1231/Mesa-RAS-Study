@@ -16,16 +16,21 @@ Load the docker image:
 docker load -i messy_image.tar
 
 Run the container:
-
+```text
 docker run -it messy_image
-
+```
 ---
 
 # 2. Run the Original Example Once
 
 Inside the container, compile and run the default example to generate the initial GVSoC build environment.
 
+```text
+python3 messy.py -f codegen/pulp_open.json -a /messy/examples/read_write_sensor
+```
+```text
 make application app=/messy/examples/read_write_sensor
+```
 
 This step generates the necessary simulation code and build environment.
 
@@ -37,17 +42,13 @@ After the example is successfully built, terminate the example execution.
 
 Navigate to the example directory:
 
-/messy/messy/example/read_write_sensor
+/messy/example/read_write_sensor
 
 Replace the file:
 
 read_write_sensor.c
 
 with the modified version provided in this repository.
-
-Example command:
-
-cp read_write_sensor.c /messy/messy/example/read_write_sensor/
 
 ---
 
@@ -70,11 +71,21 @@ power_bus.cpp
 sensor_mic_click_functional.cpp  
 sensor_mic_click_power.cpp  
 
-Example command:
+Navigate to the source directory:
+/messy/messy/include
 
-cp src/* /messy/messy/src/
+Replace the following files with the modified versions provided in this repository:
+core.hpp  
+core_power.hpp  
+functional_bus.hpp  
+harvester_battery.hpp  
+lut.hpp  
+messy_request.hpp  
+power_bus.hpp  
+sensor_mic_click_functional.hpp  
+sensor_mic_click_power.hpp  
 
-These files implement the modified SystemC-AMS behaviour required for the suspension co-simulation framework.
+These files implement the modified SystemC-AMS behaviour required for the regenerative suspension co-simulation framework.
 
 ---
 
@@ -82,18 +93,18 @@ These files implement the modified SystemC-AMS behaviour required for the suspen
 
 Rebuild the application so that the modified SystemC-AMS modules and sensor interface are compiled into the GVSoC simulation.
 
-Run:
-
+Run: 
+```text
 make application app=/messy/examples/read_write_sensor
-
+```
 ---
 
 # 6. Run the Simulation
 
 Finally run the simulation:
-
+```text
 make run
-
+```
 ---
 
 # Workflow Summary
@@ -102,7 +113,7 @@ docker load messy image
 ↓  
 run container  
 ↓  
-make application (generate baseline build)  
+make application: read_write_sensor (generate baseline build)  
 ↓  
 replace example source file  
 ↓  
@@ -118,7 +129,7 @@ make run
 
 Example application:
 
-examples/read_write_sensor/read_write_sensor.c
+read_write_sensor.c
 
 SystemC-AMS source files:
 
@@ -133,6 +144,16 @@ power_bus.cpp
 sensor_mic_click_functional.cpp  
 sensor_mic_click_power.cpp  
 
+core.hpp  
+core_power.hpp  
+functional_bus.hpp  
+harvester_battery.hpp  
+lut.hpp  
+messy_request.hpp  
+power_bus.hpp  
+sensor_mic_click_functional.hpp  
+sensor_mic_click_power.hpp  
+
 ---
 
 # Notes
@@ -143,7 +164,7 @@ The modified modules integrate:
 
 - SystemC-AMS models
 - sensor interface logic
-- power bus simulation
+- controller behavior simulation
 - energy harvesting behaviour
 
 These components are used as part of a larger simulation workflow including Modelica vehicle models and Lingua Franca orchestration.
