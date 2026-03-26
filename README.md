@@ -55,26 +55,33 @@ Modelica physical vehicle model
 Lingua Franca acts as the coordination layer that manages communication between the different simulation environments.
 
 ---
+## Repository Structure
 
-# Repository Structure
-BlackMesaSystem
+```text
+BlackMesaSystem/
+├── .git/
+├── docker/
+│   ├── MESSY/
+│   │   ├── example/
+│   │   ├── src/
+│   │   └── readme.txt
+│   └── README.md
 │
-├── modelica
-│ Modelica physical dynamic models
-│ Vehicle suspension dynamics and road disturbances
+├── lf/
+│   ├── include/
+│   ├── lib/
+│   ├── share/
+│   ├── src/
+│   └── README.md
 │
-├── lf
-│ Lingua Franca orchestration programs
-│ Coordinates communication between simulation modules
+├── modelica/
+│   ├── Mclient/
+│   └── README.md
 │
-├── docker
-│ Docker environment containing the MESSY framework
-│ Includes SystemC-AMS and GVSoC simulation environment
-│
+├── .gitignore
+├── LICENSE
 └── README.md
-
-Each directory contains additional documentation explaining the corresponding subsystem.
-
+```
 ---
 
 # Components
@@ -145,51 +152,67 @@ Execution order:
 
 # Step 1 — Start Lingua Franca Server
 
-Navigate to the LF directory:
 
-cd lf
+## Run Lingua Franca Server
 
-Compile the LF program if necessary:
+Navigate to the `lf/src` directory and compile the LF program:
 
-lfc server.lf
-
-Run the server:
-
-./bin/server
-
+```bash
+cd lf/src
+lfc mesa2.lf
+cd ../bin  //The compiled executable will be generated in the lf/bin directory.
+mesa2.exe
+```
+Alternatively, the program can also be built and executed within an IDE environment (e.g., VSCode with Lingua Franca extension).
 The LF server must remain running during the entire simulation.
 
 ---
 
 # Step 2 — Start the MESSY Simulation
 
-Open a new terminal.
+## Run MESSY Simulation
 
-Start the Docker container containing the MESSY framework:
+Before running the MESSY simulation, the source code in the Docker environment must be aligned with this repository.
 
-docker run -it messy_image
+### Prepare MESSY Source Code
 
-Inside the container compile the application:
+Replace the corresponding files in the MESSY framework:
 
+```text
+Copy from (this repository):
+docker/MESSY/src/
+
+→ To (inside Docker container):
+/messy/messy/src/
+```
+Replace the example application:
+```text
+Copy from (this repository):
+docker/MESSY/example/
+
+→ To (inside Docker container):
+/messy/messy/examples/read_write_sensor/
+```
+Build Application
+
+Compile the MESSY application (this step builds the example program and links it with the MESSY framework):
+```text
 make application app=/messy/examples/read_write_sensor
-
-Then run the simulation:
-
 make run
+```
 
 ---
 
 # Step 3 — Start the Modelica Simulation
 
-Open another terminal.
 
-Navigate to the Modelica directory:
+Navigate to the `modelica/Mclient` directory and open the Modelica project using a Modelica-compatible environment (e.g., OpenModelica).
 
-cd modelica
+Run the desired top-level model, such as:
 
-Launch the Modelica simulation environment and run the vehicle suspension model.
+- `TestFullCarRoad_ActiveVsPassive...`
 
-The Modelica model exchanges data with the Lingua Franca server through the TCP communication interface.
+The Modelica model communicates with the Lingua Franca server via a TCP-based interface.
 
 ---
 
@@ -209,14 +232,16 @@ The system components will then exchange data during the co-simulation process.
 
 # Requirements
 
-Recommended environment:
 
-Linux (Ubuntu 22.04)  
-Docker  
-Lingua Franca compiler  
-OpenModelica  
-C++ compiler (gcc)
+This project has been developed and tested primarily in the following environment:
 
+- Windows 10 / 11
+- Docker Desktop for the MESSY simulation environment
+- Lingua Franca compiler
+- OpenModelica
+- C++ compiler (e.g., MSVC)
+
+> The overall workflow is executed on Windows, while the MESSY framework runs inside a Docker container.
 ---
 
 # Research Purpose
