@@ -1,36 +1,44 @@
-## System Architecture
+```mermaid
+flowchart TB
+    Modelica["Modelica<br/>Vehicle Dynamics"]
+    LF["Lingua Franca<br/>Orchestrator"]
+    SCAMS["MESSY<br/> SystemC-AMS + GVSoC"]
 
-+---------------------+
-|  Modelica           |
-|  Vehicle Dynamics   |
-+---------------------+
-        ↑   ↓
-+---------------------+
-|  Lingua Franca      |
-|  Orchestration      |
-+---------------------+
-        ↑   ↓
-+---------------------+
-|  SystemC-AMS        |
-|  MESSY + GVSoC      |
-+---------------------+
+    Modelica <-->|TCP / Socket| LF
+    LF <-->|TCP / Socket| SCAMS
+```
 
----
 
 # Black Mesa System
 
-The **Black Mesa System** is a co-simulation framework designed for research on vehicle suspension systems and cyber-physical simulation environments.
+The **Black Mesa System** is a co-simulation framework designed for cyber-physical system research, with a focus on multi-domain integration and deterministic orchestration.
 
-The system integrates multiple simulation technologies into a unified framework, allowing coordinated execution of:
+It enables coordinated execution across heterogeneous simulation environments, including:
 
-- physical vehicle dynamics models
-- system-level orchestration
-- hardware-oriented simulation
-- embedded software execution
-
-The framework enables experiments that combine physical models, simulation middleware, and embedded execution environments.
+- physical system modeling (e.g., vehicle dynamics in Modelica)
+- system-level orchestration (Lingua Franca)
+- hardware-oriented simulation (SystemC-AMS)
+- embedded software execution (GVSoC / RISC-V)
 
 ---
+
+## Current Research Focus
+
+This project has been applied to the study of **regenerative suspension systems**, where control strategies, energy recovery mechanisms, and physical dynamics are jointly simulated.
+
+---
+
+## General Capability
+
+Beyond regenerative suspension, the framework is designed as a **general-purpose co-simulation platform**, capable of supporting:
+
+- advanced vehicle control systems (active suspension, ADAS)
+- sensor fusion and perception-driven control
+- hardware-in-the-loop (HIL) experiments
+- cyber-physical system validation
+- cross-layer simulation from physics to embedded software
+
+The architecture allows flexible extension to other domains where tight coupling between physical models, control logic, and embedded execution is required.
 
 # System Architecture
 
