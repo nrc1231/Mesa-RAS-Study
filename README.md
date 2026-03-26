@@ -176,7 +176,7 @@ The LF server must remain running during the entire simulation.
 Before running the MESSY simulation, the source code in the Docker environment must be aligned with this repository.
 
 ### Prepare MESSY Source Code
-First, run the read_write_sensor example of origin MESSY system:
+First, run the read_write_sensor example of origin MESSY system: like shown in: https://eml-eda.github.io/messy/examples/read-write-sensor/
 
 ```text
 python3 messy.py -f codegen/pulp_open.json -a /messy/examples/read_write_sensor
