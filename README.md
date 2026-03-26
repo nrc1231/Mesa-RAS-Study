@@ -222,11 +222,15 @@ make run
 # Step 3 — Start the Modelica Simulation
 
 
-Navigate to the `modelica/Mclient` directory and open the Modelica project using a Modelica-compatible environment (e.g., OpenModelica).
+Navigate to the `modelica/Mclient` directory and open the Modelica project using a Modelica-compatible environment (e.g., OpenModelica: https://openmodelica.org/download/download-windows/).
 
-Run the desired top-level model, such as:
+Run the auto load script:
 
-- `TestFullCarRoad_ActiveVsPassive...`
+- `package.mo`
+  
+Run the desired top-level model:
+
+- `TestFullCarRoad_ActiveVsPassive.mo`
 
 The Modelica model communicates with the Lingua Franca server via a TCP-based interface.
 
