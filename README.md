@@ -64,6 +64,7 @@ BlackMesaSystem/
 │   ├── MESSY/
 │   │   ├── example/
 │   │   ├── src/
+│   │   ├── include/
 │   │   └── readme.txt
 │   └── README.md
 │
@@ -185,13 +186,20 @@ docker/MESSY/src/
 → To (inside Docker container):
 /messy/messy/src/
 ```
+```text
+Copy from (this repository):
+docker/MESSY/include/
+
+→ To (inside Docker container):
+/messy/messy/include/
+```
 Replace the example application:
 ```text
 Copy from (this repository):
 docker/MESSY/example/
 
 → To (inside Docker container):
-/messy/messy/examples/read_write_sensor/
+/messy/examples/read_write_sensor/
 ```
 Build Application
 
