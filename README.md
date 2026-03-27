@@ -195,11 +195,26 @@ docker/MESSY/src/
 /messy/messy/src/
 ```
 ```text
+```text
+Copy from (this repository):
+docker/MESSY/src/converter/
+
+→ To (inside Docker container):
+/messy/messy/src/converter/
+```
+```text
 Copy from (this repository):
 docker/MESSY/include/
 
 → To (inside Docker container):
 /messy/messy/include/
+```
+```text
+Copy from (this repository):
+docker/MESSY/include/converter/
+
+→ To (inside Docker container):
+/messy/messy/include/converter/
 ```
 Replace the example application:
 ```text
