@@ -67,11 +67,11 @@ The Black Mesa System is composed of multiple layers that interact through a co-
 
 The execution flow of the system is:
 
-Lingua Franca orchestration  
+Lingua Franca orchestration          
 ↓  
-MESSY SystemC-AMS + GVSoC simulation
+MESSY SystemC-AMS + GVSoC simulation       
 ↓  
-Modelica physical vehicle model  
+Modelica physical vehicle model   
 
 Lingua Franca acts as the coordination layer that manages communication between the different simulation environments.
 
