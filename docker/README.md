@@ -78,6 +78,7 @@ power_bus.cpp
 sensor_mic_click_functional.cpp  
 sensor_mic_click_power.cpp  
 
+
 Navigate to the source directory:
 /messy/messy/include/
 
@@ -92,19 +93,21 @@ power_bus.hpp
 sensor_mic_click_functional.hpp  
 sensor_mic_click_power.hpp  
 
+
 Navigate to the source directory:
 
 /messy/messy/src/converter/
 
-Replace the following files with the modified versions provided in this repository: /docker/MESSY/src/converter/
+Replace the following files with the modified versions provided in this repository: /docker/MESSY/src/converter/ 
 battery_converter.cpp
 core_converter.cpp
+
 
 Navigate to the source directory:
 
 /messy/messy/include/converter/
 
-Replace the following files with the modified versions provided in this repository: /docker/MESSY/src/converter/
+Replace the following files with the modified versions provided in this repository: /docker/MESSY/src/converter/ 
 battery_converter.hpp
 core_converter.hpp
 
