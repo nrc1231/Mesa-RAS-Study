@@ -21,6 +21,17 @@ lf/
 src/       → Generated C++ source code  
 
 These files are generated automatically by the Lingua Franca compiler.
+---
+# Complie the LF server
+
+Navigate to the `lf/src` directory and compile the LF program:
+
+```bash
+cd lf/src
+lfc mesa2.lf
+cd ../bin  //The compiled executable will be generated in the lf/bin directory.
+mesa2.exe
+```
 
 ---
 
