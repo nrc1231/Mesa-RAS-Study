@@ -19,9 +19,10 @@ The LF runtime is responsible for scheduling tasks and managing communication be
 lf/
 
 src/       → Generated C++ source code  
-
 These files are generated automatically by the Lingua Franca compiler.
+
 ---
+
 # Complie the LF server
 
 Navigate to the `lf/src` directory and compile the LF program:
