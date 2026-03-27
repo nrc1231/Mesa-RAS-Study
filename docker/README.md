@@ -101,7 +101,7 @@ Navigate to the source directory:
 
 Replace the following files with the modified versions provided in this repository: /docker/MESSY/src/converter/ 
 
-battery_converter.cpp
+battery_converter.cpp                         
 core_converter.cpp
 
 
@@ -111,7 +111,7 @@ Navigate to the source directory:
 
 Replace the following files with the modified versions provided in this repository: /docker/MESSY/src/converter/ 
 
-battery_converter.hpp
+battery_converter.hpp                     
 core_converter.hpp
 
 
