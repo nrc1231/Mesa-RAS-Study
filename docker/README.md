@@ -47,7 +47,7 @@ After the example is successfully built, terminate the example execution.
 
 # 3. Replace the Example Sensor Source File
 
-1）Navigate to the example directory:
+Navigate to the example directory:
 
 /messy/examples/read_write_sensor
 
@@ -61,7 +61,7 @@ with the modified version provided in this repository: /docker/MESSY/example/.
 
 # 4. Replace the SystemC-AMS Source Files
 
-2）Navigate to the source directory:
+1）Navigate to the source directory:
 
 /messy/messy/src/
 
@@ -79,7 +79,7 @@ sensor_mic_click_functional.cpp
 sensor_mic_click_power.cpp  
 
 
-3）Navigate to the source directory:
+2）Navigate to the source directory:
 /messy/messy/include/
 
 Replace the following files with the modified versions provided in this repository: /docker/MESSY/include/
@@ -95,7 +95,7 @@ sensor_mic_click_functional.hpp
 sensor_mic_click_power.hpp  
 
 
-4）Navigate to the source directory:
+3）Navigate to the source directory:
 
 /messy/messy/src/converter/
 
@@ -105,7 +105,7 @@ battery_converter.cpp
 core_converter.cpp
 
 
-Navigate to the source directory:
+4）Navigate to the source directory:
 
 /messy/messy/include/converter/
 
