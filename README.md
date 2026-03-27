@@ -198,7 +198,7 @@ Before running the MESSY simulation, the source code in the Docker environment m
 
 ### Prepare MESSY Source Code
 First, run the read_write_sensor example of origin MESSY system: like shown in: https://eml-eda.github.io/messy/examples/read-write-sensor/
-
+See detail in: docker/README.md
 ```text
 python3 messy.py -f codegen/pulp_open.json -a /messy/examples/read_write_sensor
 ```
