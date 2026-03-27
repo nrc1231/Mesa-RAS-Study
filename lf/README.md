@@ -18,11 +18,7 @@ The LF runtime is responsible for scheduling tasks and managing communication be
 
 lf/
 
-include/   → Generated C++ header files  
-lib/       → Compiled runtime libraries  
-share/     → Runtime resources  
 src/       → Generated C++ source code  
-lf.gitignore  
 
 These files are generated automatically by the Lingua Franca compiler.
 
