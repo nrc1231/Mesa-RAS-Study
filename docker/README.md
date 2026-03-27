@@ -17,7 +17,7 @@ docker load -i messy_image.tar
 
 Run the container:
 ```text
-docker run -it messy_image
+docker run -it -p 3000:3000 --user root messy /bin/bash
 ```
 ---
 
@@ -56,7 +56,7 @@ with the modified version provided in this repository: /docker/MESSY/example/.
 
 Navigate to the source directory:
 
-/messy/messy/src
+/messy/messy/src/
 
 Replace the following files with the modified versions provided in this repository: /docker/MESSY/src/
 
@@ -72,7 +72,7 @@ sensor_mic_click_functional.cpp
 sensor_mic_click_power.cpp  
 
 Navigate to the source directory:
-/messy/messy/include
+/messy/messy/include/
 
 Replace the following files with the modified versions provided in this repository: /docker/MESSY/include/
 core.hpp  
@@ -84,6 +84,23 @@ messy_request.hpp
 power_bus.hpp  
 sensor_mic_click_functional.hpp  
 sensor_mic_click_power.hpp  
+
+Navigate to the source directory:
+
+/messy/messy/src/converter/
+
+Replace the following files with the modified versions provided in this repository: /docker/MESSY/src/converter/
+battery_converter.cpp
+core_converter.cpp
+
+Navigate to the source directory:
+
+/messy/messy/include/converter/
+
+Replace the following files with the modified versions provided in this repository: /docker/MESSY/src/converter/
+battery_converter.hpp
+core_converter.hpp
+
 
 These files implement the modified SystemC-AMS behaviour required for the regenerative suspension co-simulation framework.
 
