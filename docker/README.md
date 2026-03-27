@@ -83,6 +83,7 @@ Navigate to the source directory:
 /messy/messy/include/
 
 Replace the following files with the modified versions provided in this repository: /docker/MESSY/include/
+
 core.hpp  
 core_power.hpp  
 functional_bus.hpp  
@@ -99,6 +100,7 @@ Navigate to the source directory:
 /messy/messy/src/converter/
 
 Replace the following files with the modified versions provided in this repository: /docker/MESSY/src/converter/ 
+
 battery_converter.cpp
 core_converter.cpp
 
@@ -108,6 +110,7 @@ Navigate to the source directory:
 /messy/messy/include/converter/
 
 Replace the following files with the modified versions provided in this repository: /docker/MESSY/src/converter/ 
+
 battery_converter.hpp
 core_converter.hpp
 
