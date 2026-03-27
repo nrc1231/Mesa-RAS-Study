@@ -14,14 +14,32 @@ flowchart TB
 
 <img width="394" height="424" alt="ChatGPT Image 2026年3月26日 15_08_50" src="https://github.com/user-attachments/assets/44c35973-3eff-45f1-aabc-5fd59648fd62" />
 
-The **Black Mesa System** is a co-simulation framework designed for cyber-physical system research, with a focus on multi-domain integration and deterministic orchestration.
+## Overview
 
-It enables coordinated execution across heterogeneous simulation environments, including:
+**Black Mesa System** is a heterogeneous co-simulation framework designed for cyber-physical systems, enabling deterministic orchestration across multiple simulation domains.
 
-- physical system modeling (e.g., vehicle dynamics in Modelica)
-- system-level orchestration (Lingua Franca)
-- hardware-oriented simulation (SystemC-AMS)
-- embedded software execution (GVSoC / RISC-V)
+It integrates:
+
+- **Modelica** → physical system dynamics (vehicle suspension)
+- **Lingua Franca (LF)** → deterministic orchestration layer
+- **SystemC-AMS + GVSoC (MESSY)** → hardware and embedded execution
+
+---
+
+## Key Contribution
+
+This project does **not replace** the original MESSY framework.
+
+Instead, it provides:
+
+> **A structured and reproducible extension layer that enables cross-domain co-simulation orchestration.**
+
+Key contributions include:
+
+- Deterministic orchestration using **Lingua Franca**
+- Cross-domain data synchronization via **TCP-based interfaces**
+- Integration of physical models, control logic, and embedded execution
+- Extension of MESSY into a multi-layer cyber-physical simulation platform
 
 ---
 
@@ -51,7 +69,7 @@ The execution flow of the system is:
 
 Lingua Franca orchestration  
 ↓  
-MESSY SystemC-AMS simulation (GVSoC environment)  
+MESSY SystemC-AMS + GVSoC simulation
 ↓  
 Modelica physical vehicle model  
 
