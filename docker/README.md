@@ -9,11 +9,18 @@ This repository only contains the modified files and instructions needed to repr
 
 # 1. Obtain the MESSY Docker Image
 
-Download the prebuilt **MESSY docker** see in the following link：https://eml-eda.github.io/messy/getting-started/ 
+Download the **MESSY docker** file by following the steps seen in the following link：https://eml-eda.github.io/messy/getting-started/ 
+
+```text
+git clone https://github.com/eml-eda/messy
+cd messy
+```
 
 Load the docker image:
 
-docker load -i messy_image.tar
+```text
+docker build . -f docker/pulp-open/Dockerfile -t messy --build-arg USER_ID=$(id -u ${USER}) --build-arg GROUP_ID=$(id -g ${USER})
+```
 
 Run the container:
 ```text
@@ -144,7 +151,7 @@ make run
 
 # Modified Files
 
-Example application:
+Example application in GvSoC:
 
 read_write_sensor.c
 
@@ -160,6 +167,9 @@ messy_request.cpp
 power_bus.cpp  
 sensor_mic_click_functional.cpp  
 sensor_mic_click_power.cpp  
+battery_converter.cpp
+core_converter.cpp
+
 
 core.hpp  
 core_power.hpp  
@@ -170,6 +180,8 @@ messy_request.hpp
 power_bus.hpp  
 sensor_mic_click_functional.hpp  
 sensor_mic_click_power.hpp  
+battery_converter.hpp
+core_converter.hpp
 
 ---
 
