@@ -18,6 +18,7 @@ Main components:
 - Auto load script: package.mo  
   Organizes and initializes the Modelica package.
 
+---
 
 Co-simulation interface:
 The Modelica model exchanges simulation data with the Lingua Franca server through a TCP-based communication interface.
@@ -38,6 +39,7 @@ It is responsible for:
 - Supplying realistic system responses to control algorithms implemented in LF, SystemC-AMS, and GVSoC
 - Serving as the reference environment for evaluating control strategies (e.g., PID, skyhook, regenerative suspension control)
 
+---
 
 System integration perspective:
 Within the overall architecture:
