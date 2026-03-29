@@ -177,17 +177,10 @@ Execution order:
 
 ## Run Lingua Franca Server
 
-Navigate to the `lf/src` directory and compile the LF program:
-
-```bash
-cd lf/src
-lfc mesa2.lf
-cd ../bin  //The compiled executable will be generated in the lf/bin directory.
-mesa2.exe
-```
+Navigate to the `lf/src` directory and compile the LF program: See detail in: lf/README.md  
 Alternatively, the program can also be built and executed within an IDE environment (e.g., VSCode with Lingua Franca extension).
 The LF server must remain running during the entire simulation.
-See detail in: lf/README.md
+
 ---
 
 # Step 2 — Start the MESSY Simulation
