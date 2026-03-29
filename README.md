@@ -187,7 +187,7 @@ mesa2.exe
 ```
 Alternatively, the program can also be built and executed within an IDE environment (e.g., VSCode with Lingua Franca extension).
 The LF server must remain running during the entire simulation.
-
+See detail in: lf/README.md
 ---
 
 # Step 2 — Start the MESSY Simulation
