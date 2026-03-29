@@ -7,7 +7,7 @@ Main components:
   Implements the full-vehicle active suspension system, including body and wheel dynamics.
 
 - Road disturbance generator: RoadStep4W.mo  
-  Provides four-wheel road excitation inputs based on predefined or stochastic profiles.
+  Provides four-wheel road excitation inputs based on predefined or stochastic ISO standard road profiles.
 
 - Full-car passive suspension baseline: passive.mo  
   Serves as a reference model for performance comparison with active control strategies.
