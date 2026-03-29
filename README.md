@@ -191,7 +191,6 @@ Before running the MESSY simulation, the source code in the Docker environment m
 
 ### Prepare MESSY Source Code
 First, run the read_write_sensor example of origin MESSY system: like shown in: https://eml-eda.github.io/messy/examples/read-write-sensor/
-See detail in: docker/README.md
 
 Replace the corresponding files in the MESSY framework:
 
@@ -233,12 +232,8 @@ docker/MESSY/example/
 /messy/examples/read_write_sensor/
 ```
 Build Application
-
 Compile the MESSY application (this step builds the example program and links it with the MESSY framework):
-```text
-make application app=/messy/examples/read_write_sensor
-make run
-```
+See detail in: docker/README.md
 
 ---
 
