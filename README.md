@@ -177,7 +177,7 @@ Execution order:
 
 ## Run Lingua Franca Server
 
-Navigate to the `lf/src` directory and compile the LF program: See detail in: lf/README.md  
+Navigate to the `lf/src` directory and compile the LF program. See detail in: lf/README.md  
 Alternatively, the program can also be built and executed within an IDE environment (e.g., VSCode with Lingua Franca extension).
 The LF server must remain running during the entire simulation.
 
