@@ -259,5 +259,5 @@ More detailed documentation will be available after publication.
 
 For questions regarding the Black Mesa System or reproduction instructions, please contact the repository authors.
 
-This repository is released under the Apache 2.0 License.
+This repository is released under the Apache-2.0 License.
 See the LICENSE file for details.
