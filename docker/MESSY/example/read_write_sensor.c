@@ -32,39 +32,24 @@ int main(void)
     printf("[%d %d] Hello World!\n", cluster_id, core_id);
 
   
-    int* mic_click_sensor1 = (volatile int *)(AXI_BASE+0x0); //afl
-    int* mic_click_sensor2 = (volatile int *)(AXI_BASE+0x4); //afr
-    int* mic_click_sensor4 = (volatile int *)(AXI_BASE+0x10); //arl
-    int* mic_click_sensor5 = (volatile int *)(AXI_BASE+0x14); //cs2
-    int* mic_click_sensor6 = (volatile int *)(AXI_BASE+0x20); //cs1
-    int* mic_click_sensor7 = (volatile int *)(AXI_BASE+0x24); //arr
-    int* mic_click_sensor8 = (volatile int *)(AXI_BASE+0x30); //cs3
-    int* mic_click_sensor9 = (volatile int *)(AXI_BASE+0x34); //cs4
+    int* mic_click_sensor1 = (volatile int *)(AXI_BASE+0x0); 
+    int* mic_click_sensor2 = (volatile int *)(AXI_BASE+0x4); 
+    int* mic_click_sensor4 = (volatile int *)(AXI_BASE+0x10); 
+    int* mic_click_sensor5 = (volatile int *)(AXI_BASE+0x14); 
+    int* mic_click_sensor6 = (volatile int *)(AXI_BASE+0x20); 
+    int* mic_click_sensor7 = (volatile int *)(AXI_BASE+0x24); 
+    int* mic_click_sensor8 = (volatile int *)(AXI_BASE+0x30); 
+    int* mic_click_sensor9 = (volatile int *)(AXI_BASE+0x34); 
   
     for(int i=0;i<NUM_ITERS;i++){
-        //printf("Microphone sensor1 %d\n", *mic_click_sensor1);
-        //printf("Microphone sensor2 %d\n", *mic_click_sensor2);
-        //printf("Microphone sensor3 %d\n", *mic_click_sensor3);
-        //printf("Microphone sensor7 %d\n", *mic_click_sensor7);
-        //printf("Microphone sensor8 %d\n", *mic_click_sensor8);
-        //printf("Microphone sensor12 %d\n", *mic_click_sensor12);
-        //printf("  \n");
-        //printf("[GvSOC]PID computation activated\n");
-       
-        //crashed=*mic_click_sensor10;
-        //EB=*mic_click_sensor10;
+    
        i++;
-       //printf("[GvSOC]is activated times= %d\n",i);
+       
        z=* mic_click_sensor1;
        vy=* mic_click_sensor2;
        arlr=* mic_click_sensor4;
        arrr=* mic_click_sensor7;
-       //xw=* mic_click_sensor5;
-       //vw=* mic_click_sensor6;
-       //printf("[GvSOC]z= %d\n",z);
-       //printf("[GvSOC]vy= %d\n",vy);
-       //printf("[GvSOC]xw= %d\n",xw);
-      // 
+      
        double v_s=z;
        double v_rel=vy;
        double ec=vw;
@@ -75,34 +60,7 @@ int main(void)
        arl=arl/1000000;
        arr=arr/1000000;
        static double sigma=1;
-       
-      // double Cref=3500;
-       //double fdes=0,fdes2=0,fdes3=0,fdes4=0;
-      
-       //double edes=0-v_s;
-       //double edes2=0-v_rel;
-       //double pdes=edes;
-       //double pdes2=edes2;
-       //static  double Ides=0;
-       //static  double Ides2=0,Ides3=0,Ides4=0;
-       //Ides2 += v_rel;
-       //Ides += v_s;
-       //Ides3 += arl;
-       //Ides4 += arr;
-       //fdes= 100*v_s+0.05*Ides;//-2000*v_s;
-       //fdes2=100*v_rel+0.05*Ides2;
-       //fdes3=100*arl+0.05*Ides3;
-       //fdes4=100*arr+0.05*Ides4;
 
-      //sky
-       //fdes= 440*v_s;//+0.05*Ides;//-2000*v_s;
-       //fdes2=440*v_rel;//+0.05*Ides2;
-      // fdes3=440*arl;//+0.05*Ides3;
-       //fdes4=440*arr;//+0.05*Ides4;
-
-
-      
-    //double Cref = 3500;
     double fdes  = 0.0, fdes2 = 0.0, fdes3 = 0.0, fdes4 = 0.0;
     double fdes12  = 0.0, fdes22 = 0.0, fdes23 = 0.0, fdes24 = 0.0;
     double fdes13  = 0.0, fdes32 = 0.0, fdes33 = 0.0, fdes34 = 0.0;
@@ -158,9 +116,9 @@ int main(void)
         if (KI_vs < KI_MIN) KI_vs = KI_MIN; if (KI_vs > KI_MAX) KI_vs = KI_MAX;
         if (KD_vs < KD_MIN) KD_vs = KD_MIN; if (KD_vs > KD_MAX) KD_vs = KD_MAX;
 
-        fdes12 =K_vs * v_s + KI_vs * Ides + KD_vs * d_use;
-        fdes13= 100*v_s+0.25*Ides;
-        fdes14= 1440*v_s;
+        fdes12 =K_vs * v_s + KI_vs * Ides + KD_vs * d_use;  //PIDAD
+        fdes13= 100*v_s+0.25*Ides;                          //PI
+        fdes14= 1440*v_s;                                   //SH
         fdes=fdes13;               //choose the controller you want to test
         prev_err_vs = error_vs;
     }
@@ -231,33 +189,12 @@ int main(void)
         prev_err_rr = error_rr;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-       
-       double ceq=1250;
-       double phi = 124.0;     // 电机常数（示例，和你 SystemC 保持一致）
-       double r_m = 12.3;      // 电机内阻
-       //double Ireq=fdes/phi;
        fdes=fdes*1000;
        fdes2=fdes2*1000;
        fdes3=fdes3*1000;
        fdes4=fdes4*1000;
        printf("[GvSOC]fdes1 = %f\n",v_s);
-       printf("[GvSOC]fdes2 = %f\n",v_rel);
-       //fdes=15;
-      
+       
        
         if(i==0){                    
           *mic_click_sensor1 = 0;
@@ -286,3 +223,4 @@ int main(void)
 
     return errors;
 }
+    
