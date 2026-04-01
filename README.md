@@ -42,6 +42,7 @@ Key contributions include:
 - Cross-domain data synchronization via **TCP-based interfaces**
 - Integration of physical models, control logic, and embedded execution
 - Extension of MESSY into a multi-layer cyber-physical simulation platform
+- Enables cross-language and cross-platform co-simulation by requiring only TCP/IP socket-based communication interfaces for subsystem integration.
 
 ---
 
