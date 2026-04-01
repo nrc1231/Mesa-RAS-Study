@@ -201,17 +201,7 @@ See detail in: modelica/README.md
 
 ---
 
-# To start the simulation
-
-The complete execute order is:
-
-Start Lingua Franca server  
-↓  
-Start MESSY simulation  
-↓  
-Start Modelica simulation  
-
-The system components will then exchange data during the co-simulation process.
+# Simulation process
 
 <img width="1130" height="604" alt="image" src="https://github.com/user-attachments/assets/650c97ab-028e-4453-b081-21d87c067209" /> 
 
