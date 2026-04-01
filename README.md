@@ -124,50 +124,48 @@ Main components include:
 
 See:
 
-modelica/README.md
+modelica/README.md 
+
+---  
+
+## Lingua Franca   
+
+The **Lingua Franca (LF)** subsystem provides the orchestration layer of the co-simulation framework.   
+
+It is responsible for:   
+  
+- scheduling simulation execution  
+- coordinating data exchange  
+- managing communication between subsystems  
+  
+See detail in: lf/README.md    
 
 ---
 
-## Lingua Franca
+## MESSY / SystemC-AMS Environment   
+ 
+The **docker** directory contains the simulation environment based on the **MESSY framework**.   
 
-The **Lingua Franca (LF)** subsystem provides the orchestration layer of the co-simulation framework.
+This environment includes:   
+  
+- SystemC-AMS simulation modules  
+- GVSoC embedded system simulation  
+- sensor and power system models  
+- communication interfaces for co-simulation  
+  
+The environment is distributed as a Docker image to ensure reproducibility.   
 
-It is responsible for:
+See detail in: docker/README.md   
 
-- scheduling simulation execution
-- coordinating data exchange
-- managing communication between subsystems
 
-See:
-
-lf/README.md
-
----
-
-## MESSY / SystemC-AMS Environment
-
-The **docker** directory contains the simulation environment based on the **MESSY framework**.
-
-This environment includes:
-
-- SystemC-AMS simulation modules
-- GVSoC embedded system simulation
-- sensor and power system models
-- communication interfaces for co-simulation
-
-The environment is distributed as a Docker image to ensure reproducibility.
-
-See:
-
-docker/README.md
 
 ---
 
 # Running the Simulation
 
-The simulation requires three components to be started in the correct order.
+The simulation requires three components to be started in the correct order.    
 
-Execution order:
+Execution order:  
 
 1. Lingua Franca server  
 2. MESSY SystemC-AMS simulation  
@@ -177,83 +175,31 @@ Execution order:
 
 # Step 1 — Start Lingua Franca Server
 
-
 ## Run Lingua Franca Server
 
-Navigate to the `lf/src` directory and compile the LF program. See detail in: lf/README.md  
-Alternatively, the program can also be built and executed within an IDE environment (e.g., VSCode with Lingua Franca extension).
-The LF server must remain running during the entire simulation.
+See detail in: lf/README.md    
+   
+Alternatively, the program can also be built and executed within an IDE environment (e.g., VSCode with Lingua Franca extension).   
+  
+The LF server must remain running during the entire simulation.   
 
 ---
 
 # Step 2 — Start the MESSY Simulation
 
-## Run MESSY Simulation
+## Run MESSY Simulation   
 
-Before running the MESSY simulation, the source code in the Docker environment must be aligned with this repository.
+Before running the MESSY simulation, the source code in the Docker environment must be aligned with this repository.   
 
-### Prepare MESSY Source Code
-First, run the read_write_sensor example of origin MESSY system: like shown in: https://eml-eda.github.io/messy/examples/read-write-sensor/
-
-Replace the corresponding files in the MESSY framework:
-
-```text
-Copy from (this repository):
-docker/MESSY/src/
-
-→ To (inside Docker container):
-/messy/messy/src/
-```
-```text
-```text
-Copy from (this repository):
-docker/MESSY/src/converter/
-
-→ To (inside Docker container):
-/messy/messy/src/converter/
-```
-```text
-Copy from (this repository):
-docker/MESSY/include/
-
-→ To (inside Docker container):
-/messy/messy/include/
-```
-```text
-Copy from (this repository):
-docker/MESSY/include/converter/
-
-→ To (inside Docker container):
-/messy/messy/include/converter/
-```
-Replace the example application:
-```text
-Copy from (this repository):
-docker/MESSY/example/
-
-→ To (inside Docker container):
-/messy/examples/read_write_sensor/
-```
-Build Application
-Compile the MESSY application (this step builds the example program and links it with the MESSY framework):
-See detail in: docker/README.md
+See detail in: docker/README.md  
 
 ---
 
 # Step 3 — Start the Modelica Simulation
 
+Open the Modelica project using a Modelica-compatible environment (e.g., OpenModelica: https://openmodelica.org/download/download-windows/).  
 
-Navigate to the `modelica/Mclient` directory and open the Modelica project using a Modelica-compatible environment (e.g., OpenModelica: https://openmodelica.org/download/download-windows/).
-
-Run the auto load script:
-
-- `package.mo`
-  
-Run the desired top-level model:
-
-- `TestFullCarRoad_ActiveVsPassive.mo`
-
-The Modelica model communicates with the Lingua Franca server via a TCP-based interface.
+See detail in: modelica/README.md   
 
 ---
 
