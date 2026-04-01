@@ -193,7 +193,7 @@ core_converter.hpp
 
 <img width="1113" height="626" alt="d7d709b9-b153-49fb-9a6f-3264696d0534" src="https://github.com/user-attachments/assets/0c4272d1-88b4-4b88-a6aa-4d378b613f9d" />
 
-A successful running should see the empty running system like shown above.
+Upon successful execution, the system enters an idle state, as shown above.
 
 ---
 # Notes
