@@ -67,7 +67,7 @@ The architecture allows flexible extension to other domains where tight coupling
 
 The Mesa System is composed of multiple layers that interact through a co-simulation pipeline.
 
-The execution flow of the system is:
+The simulation execution flow of the system is:
 
 Lingua Franca orchestration          
 ↓  
