@@ -245,6 +245,16 @@ Please refer to the original upstream repositories for their complete source cod
 
 ---
 
+# MESA Documentation
+
+This documentation is under construction.
+
+Please refer to the README for full details.
+
+More detailed documentation will be available after publication.
+
+---
+
 # Contact
 
 For questions regarding the Black Mesa System or reproduction instructions, please contact the repository authors.
