@@ -50,7 +50,7 @@ Key contributions include:
 
 This project has been applied to the study of **regenerative suspension systems**, where control strategies, energy recovery mechanisms, and physical dynamics are jointly simulated.   
 
-This repository includes a case study demonstrating the use of the MESA system for simulating a regenerative suspension system.
+This repository includes a case study demonstrating the use of the MESA system for simulating a regenerative active suspension (RAS) system.
 
 ---
 
