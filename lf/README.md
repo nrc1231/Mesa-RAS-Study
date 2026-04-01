@@ -2,7 +2,7 @@
 
 This directory contains the **Lingua Franca (LF)** programs used in the suspension co-simulation framework.
 
-Lingua Franca is used as the **coordination and communication layer** between different simulation components.
+Lingua Franca is used as the **coordination and communication layer** between different simulation components in Mesa syste,.
 
 In this project, LF orchestrates the interaction between:
 
