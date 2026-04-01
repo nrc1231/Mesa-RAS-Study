@@ -203,9 +203,9 @@ See detail in: modelica/README.md
 
 ---
 
-# Execution Summary
+# To start the simulation
 
-The complete workflow is:
+The complete execute order is:
 
 Start Lingua Franca server  
 ↓  
