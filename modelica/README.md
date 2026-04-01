@@ -18,6 +18,14 @@ Main components:
 - Auto load script: package.mo  
   Organizes and initializes the Modelica package.
 
+<img width="1494" height="876" alt="af6a3e79-0f73-47f7-a3fb-ec81bd03729a" src="https://github.com/user-attachments/assets/10e05af6-8591-4319-8707-55ee886e4469" /> 
+
+A successful loaded program should be like shown above.
+
+<img width="1493" height="876" alt="eb105864-3af5-43e4-9c60-58b76573d3bb" src="https://github.com/user-attachments/assets/2ddd2441-17cb-46f0-ab5b-27a8d8885880" />   
+
+A properly configured simulation setup is shown above.
+
 ---
 
 Co-simulation interface:
