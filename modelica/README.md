@@ -1,6 +1,6 @@
 ### Modelica Physical Dynamics Module
 
-This folder contains the physical dynamic model used in the Mesa system, implemented in Modelica.
+This folder contains the physical dynamic model used in this Mesa system case study, implemented in Modelica.
 
 Main components:
 - Full-car active suspension dynamics: active.mo  
