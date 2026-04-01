@@ -157,8 +157,6 @@ The environment is distributed as a Docker image to ensure reproducibility.
 
 See detail in: docker/README.md   
 
-
-
 ---
 
 # Running the Simulation
@@ -257,5 +255,5 @@ Please refer to the original upstream repositories for their complete source cod
 
 For questions regarding the Black Mesa System or reproduction instructions, please contact the repository authors.
 
-This repository is released under the MIT License.
+This repository is released under the Apache 2.0 License.
 See the LICENSE file for details.
