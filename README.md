@@ -2,7 +2,7 @@
 
 Mesa-RAS-Study is a case study demonstrating the MESA system in a regenerative active suspension application.   
 
-The framework can be extended to other case studies and incorporate additional platforms. Further details of the regenerative active suspension case are presented below.
+The framework can be extended to other case studies and incorporate additional platforms. Further details of the regenerative active suspension case study are presented below.
 
 ---
 
