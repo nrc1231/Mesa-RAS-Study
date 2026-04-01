@@ -53,31 +53,17 @@ gcc 11
 
 ---
 
-# Building the LF Program
-
-Navigate to the LF directory:
-
-cd lf
-
-Compile the LF program using the Lingua Franca compiler:
-
-lfc <program>.lf
-
-This command generates the C++ runtime and source files in the following directories:
-
-include/  
-src/  
-lib/  
-
----
-
 # Running the LF Runtime
 
 After compilation, run the generated executable:
 
 ./bin/<program>
 
-This starts the Lingua Franca runtime which coordinates the simulation components.
+This starts the Lingua Franca runtime which coordinates the simulation components.   
+
+<img width="1113" height="626" alt="77c4f089-55d8-4899-b1ca-9677dc5ca83d" src="https://github.com/user-attachments/assets/1b417c03-f79b-47d6-bf87-7b265afcfcc6" />                 
+ 
+A successful execution should result in an idle system state, as illustrated above.
 
 ---
 
@@ -106,9 +92,3 @@ The LF programs provided in this directory are designed specifically for the sus
 They may require modification if used in other simulation environments.
 
 ---
-
-# Reference
-
-Lingua Franca Project
-
-https://www.lf-lang.org
