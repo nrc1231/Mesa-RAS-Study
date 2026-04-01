@@ -1,3 +1,11 @@
+# What is Mesa-RAS-Study
+
+Mesa-RAS-Study is a case study demonstrating the MESA system in a regenerative active suspension application.   
+
+The framework can be extended to other case studies and incorporate additional platforms. Further details of the regenerative active suspension case are presented below.
+
+---
+
 ```mermaid
 flowchart TB
     Modelica["Modelica<br/>Vehicle Dynamics"]
@@ -7,8 +15,6 @@ flowchart TB
     Modelica <-->|TCP / Socket| LF
     LF <-->|TCP / Socket| SCAMS
 ```
-
-
 
 # Mesa System
 
