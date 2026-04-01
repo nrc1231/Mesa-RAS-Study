@@ -33,6 +33,7 @@ docker run -it -p 3000:3000 --user root messy /bin/bash
 Inside the container, compile and run the default example to generate the initial GVSoC build environment.
 
 ```text
+cd /messy/messy/
 python3 messy.py -f codegen/pulp_open.json -a /messy/examples/read_write_sensor
 ```
 ```text
