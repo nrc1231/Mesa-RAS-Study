@@ -45,7 +45,7 @@ After the example is successfully built, terminate the example execution.
 
 # 3. Replace the Example Sensor Source File
 
-Navigate to the example directory:
+Navigate to the Docker example directory:
 
 /messy/examples/read_write_sensor
 
@@ -59,7 +59,7 @@ with the modified version provided in this repository: /docker/MESSY/example/.
 
 # 4. Replace the SystemC-AMS Source Files
 
-1）Navigate to the source directory:
+1）Navigate to the Docker directory:
 
 /messy/messy/src/
 
@@ -77,7 +77,7 @@ sensor_mic_click_functional.cpp
 sensor_mic_click_power.cpp  
 
 
-2）Navigate to the source directory:
+2）Navigate to the Docker directory:
 /messy/messy/include/
 
 Replace the following files with the modified versions provided in this repository: /docker/MESSY/include/
@@ -93,7 +93,7 @@ sensor_mic_click_functional.hpp
 sensor_mic_click_power.hpp  
 
 
-3）Navigate to the source directory:
+3）Navigate to the Docker directory:
 
 /messy/messy/src/converter/
 
@@ -103,7 +103,7 @@ battery_converter.cpp
 core_converter.cpp
 
 
-4）Navigate to the source directory:
+4）Navigate to the Docker directory:
 
 /messy/messy/include/converter/
 
@@ -189,6 +189,13 @@ core_converter.hpp
 
 ---
 
+# The expected output
+
+<img width="1113" height="626" alt="d7d709b9-b153-49fb-9a6f-3264696d0534" src="https://github.com/user-attachments/assets/0c4272d1-88b4-4b88-a6aa-4d378b613f9d" />
+
+A successful running should see the empty running system like shown above.
+
+---
 # Notes
 
 The modifications adapt the MESSY framework to support the suspension co-simulation architecture used in our research.
