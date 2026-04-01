@@ -191,7 +191,7 @@ core_converter.hpp
 
 # The expected output
 
-<img width="1113" height="626" alt="ec9d5f6f-f74b-4d38-a21d-99ac8334811d" src="https://github.com/user-attachments/assets/a30da8e0-09ff-4ba3-b0ee-a75c3d62ec6a" />
+<img width="1113" height="626" alt="ec9d5f6f-f74b-4d38-a21d-99ac8334811d" src="https://github.com/user-attachments/assets/a30da8e0-09ff-4ba3-b0ee-a75c3d62ec6a" />  
 
 Upon successful execution, the system enters an idle state, as shown above.
 
