@@ -10,13 +10,13 @@ flowchart TB
 
 
 
-# Black Mesa System
+# Mesa System
 
 <img width="394" height="424" alt="ChatGPT Image 2026年3月26日 15_08_50" src="https://github.com/user-attachments/assets/44c35973-3eff-45f1-aabc-5fd59648fd62" />
 
 ## Overview
 
-**Black Mesa System** is a heterogeneous co-simulation framework designed for cyber-physical systems, enabling deterministic orchestration across multiple simulation domains.
+**Mesa System** is a heterogeneous co-simulation framework designed for cyber-physical systems, enabling deterministic orchestration across multiple simulation domains.
 
 It integrates:
 
@@ -63,7 +63,7 @@ The architecture allows flexible extension to other domains where tight coupling
 
 # System Architecture
 
-The Black Mesa System is composed of multiple layers that interact through a co-simulation pipeline.
+The Mesa System is composed of multiple layers that interact through a co-simulation pipeline.
 
 The execution flow of the system is:
 
