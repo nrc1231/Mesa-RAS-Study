@@ -36,9 +36,6 @@ Inside the container, compile and run the default example to generate the initia
 cd /messy/messy/
 python3 messy.py -f codegen/pulp_open.json -a /messy/examples/read_write_sensor
 ```
-```text
-make application app=/messy/examples/read_write_sensor
-```
 
 This step generates the necessary simulation code and build environment.
 
