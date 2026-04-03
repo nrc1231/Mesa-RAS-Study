@@ -1,3 +1,4 @@
+
 This work has been accepted for publication at the Workshop on Open-Source Hardware (CF26-OSHW) co-located with 23rd ACM International Conference on Computing Frontiers (CF’ 26) May 19 - May 21, 2026 - Catania, Sicily, Italy
 
 ---
