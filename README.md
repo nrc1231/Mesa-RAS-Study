@@ -1,10 +1,13 @@
+This work has been accepted for publication at the Workshop on Open-Source Hardware (CF26-OSHW) co-located with 23rd ACM International Conference on Computing Frontiers (CF’ 26) May 19 - May 21, 2026 - Catania, Sicily, Italy
+
+---
+
 # What is Mesa-RAS-Study
 
 Mesa-RAS-Study is a case study demonstrating the MESA system in a regenerative active suspension application.   
 
 The framework can be extended to other case studies and incorporate additional platforms. Further details of the regenerative active suspension case study are presented below.
 
-This work has been accepted for publication at the Workshop on Open-Source Hardware (CF26-OSHW) co-located with 23rd ACM International Conference on Computing Frontiers (CF’ 26) May 19 - May 21, 2026 - Catania, Sicily, Italy
 ---
 
 ```mermaid
